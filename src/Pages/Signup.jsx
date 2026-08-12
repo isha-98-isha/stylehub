@@ -38,7 +38,7 @@ export default function Signup() { // Prop removed
     Swal.fire({
       icon: "success",
       title: "Signup successful!",
-      text: "Welcome to StyleHub 🎉",
+      text: "Welcome to StyleHub",
       showConfirmButton: false,
       timer: 1500
     });
