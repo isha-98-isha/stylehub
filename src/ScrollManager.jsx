@@ -18,18 +18,18 @@ export default function ScrollManager() {
     const isProductDetail = pathname.startsWith("/product/");
 
     if (navigationType === "POP") {
-      // Back/forward → restore saved scroll
-      window.scrollTo(0, scrollPositions[pathname] ?? 0);
+      // Back/forward → instantly jump to saved scroll position
+      window.scrollTo({ top: scrollPositions[pathname] ?? 0, behavior: "instant" });
     } else if (isProductDetail) {
-      // Entering product detail → don’t change scroll
+      // Entering product detail → don’t change scroll position
       return;
     } else {
       if (lastPathname === pathname) {
-        // Re‑clicking same navbar link → scroll to top
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        // Re‑clicking same navbar link → instantly jump to top
+        window.scrollTo({ top: 0, behavior: "instant" });
       } else {
-        // Switching to another page → restore previous scroll
-        window.scrollTo(0, scrollPositions[pathname] ?? 0);
+        // Switching to another page → instantly jump to previous scroll position
+        window.scrollTo({ top: scrollPositions[pathname] ?? 0, behavior: "instant" });
       }
     }
 
