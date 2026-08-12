@@ -26,10 +26,10 @@ export default function ScrollManager() {
     } else {
       if (lastPathname === pathname) {
         // Re‑clicking same navbar link → instantly jump to top
-        window.scrollTo({ top: 0, behavior: "instant" });
+        window.scrollTo({ top: 0, behavior: "smooth" });
       } else {
         // Switching to another page → instantly jump to previous scroll position
-        window.scrollTo({ top: scrollPositions[pathname] ?? 0, behavior: "instant" });
+        window.scrollTo({ top: scrollPositions[pathname] ?? 0, behavior: "smooth" });
       }
     }
 
