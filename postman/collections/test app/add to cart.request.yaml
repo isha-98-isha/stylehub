@@ -1,0 +1,12 @@
+$kind: http-request
+name: add to cart
+url: "{{TESTING}}product/6"
+method: POST
+body:
+  type: json
+  content: ""
+scripts:
+  - type: beforeRequest
+    code: ""
+    language: text/javascript
+order: 1785927792327

@@ -1,0 +1,36 @@
+$kind: http-request
+name: add to cart
+description: ""
+url: "{{TESTING}}/cart"
+method: POST
+body:
+  type: json
+  content: "\r
+
+    {\r
+
+    \   \"id\": 315,\r
+
+    \      \"name\": \"Bag\",\r
+
+    \      \"price\": 2199,\r
+
+    \      \"description\": \"Trendy and spacious bags suitable for all occasions\",\r
+
+    \      \"material\": \"Faux leather\",\r
+
+    \      \"delivery\": \"2–4 business days\",\r
+
+    \      \"returnPolicy\": \"Return within 10 days\"\r
+
+    \      }\r\n"
+scripts:
+  - type: beforeRequest
+    code: ""
+    language: text/javascript
+settings:
+  strictSSL: false
+  followRedirects: true
+  disableCookies: false
+  maxResponseSize: 52428800
+order: 4112605564907256

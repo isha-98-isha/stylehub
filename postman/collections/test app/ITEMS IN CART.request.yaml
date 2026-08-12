@@ -1,0 +1,8 @@
+$kind: http-request
+name: ITEMS IN CART
+url: "{{TESTING}}/cart/309"
+method: GET
+body:
+  type: json
+  content: ""
+order: 2436862431897650

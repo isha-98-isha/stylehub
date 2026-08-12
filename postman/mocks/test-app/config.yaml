@@ -1,0 +1,20 @@
+id: 019fe037-271c-778f-b9c2-c3af748b858d
+version: 1
+name: test app
+slug: new-mock-798db
+enableSession: true
+protocol: http
+port: 3001
+autoRestartOnChange: true
+logging:
+  level: verbose
+  showBody: true
+associations:
+  - entityType: collection
+    entityId: 10f9f08bF35FfB2Dbb1D5b58
+    relation: source
+    syncEnabled: false
+scenarios:
+  - name: default
+    path: ./default.js
+    default: true

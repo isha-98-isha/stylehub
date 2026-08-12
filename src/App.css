@@ -1,0 +1,356 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+  font-family: 'Segoe UI', sans-serif;
+}
+/* Ensure page content grows to push footer */
+.page {
+  flex: 1;                  /* take available space */
+  min-height: calc(100vh - 70px - 60px); /* header + footer height */
+  margin-top: 70px;          /* account for fixed header */
+  padding: 3rem;
+  background: #fff7f5;
+}
+
+/* Header */
+
+.header nav {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #1c1c1c;
+  color: white;
+  z-index: 100;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1.25rem;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  font-size: 1.7rem;
+  flex: 0 1 auto;
+  white-space: nowrap;
+}
+
+.header-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.header-nav a,
+.header-nav .logout-btn {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease, background-color 0.2s ease;
+  white-space: nowrap;
+}
+
+.header-nav a.active {
+  color: #ff4d4d;
+  border-bottom: 2px solid #ff4d4d;
+  padding-bottom: 2px;
+}
+
+.header-nav a:hover,
+.header-nav .logout-btn:hover {
+  color: #ff4d4d;
+}
+
+.logout-btn {
+  background: #351d1d;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 0.9rem;
+  cursor: pointer;
+  flex: 0 0 auto;
+}
+
+
+.header a.active {
+  color: #ff4d4d;
+  border-bottom: 2px solid #ff4d4d;
+}
+
+
+.header a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.header a:hover {
+  color: #ff4d4d;
+}
+
+/* Hero */
+.hero {
+  height: calc(100vh - 70px);
+  margin-top: 70px;
+  background-image: url('https://images.pexels.com/photos/1884581/pexels-photo-1884581.jpeg?auto=compress&cs=tinysrgb&h=650&w=940');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  position: relative;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.hero h2,
+.hero p,
+.hero button {
+  position: relative;
+  z-index: 2;
+}
+
+/* Products Grid */
+.products-container {
+  padding: 3rem 0;
+  background: #fff7f5;
+}
+
+/* Product Card */
+.product-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  transition: 0.3s;
+  display: block;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 1rem;
+}
+
+.product-card img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+}
+
+.product-card img {
+  width: 100%;
+  height: 280px;       /* unified size */
+  object-fit: cover;
+}
+
+.product-card h3 {
+  margin: 1rem 0 0.5rem;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #222;
+}
+
+.product-card .price {
+  color: #ff4d4d;
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin-bottom: 1rem;
+}
+
+/* Footer */
+.footer {
+  background: #1c1c1c;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: auto;          /* pushes footer down */
+}
+
+/* Product Detail Page */
+.product-detail {
+  max-width: 600px;
+  margin: 3rem auto;
+  text-align: center;
+  background: #fff;
+  padding: 5.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.product-detail .detail-img {
+  width: 350px;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: 0 auto 1rem;
+  display: block;
+}
+
+.product-detail h2 {
+  margin: 0.5rem 0;
+  font-size: 1.8rem;
+  color: #1c1c1c;
+}
+
+.product-detail .price {
+  color: #ff4d4d;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.product-detail p {
+  margin: 0.3rem 0;
+  color: #555;
+}
+
+.product-detail button {
+  padding: 0.6rem 1.5rem;
+  margin: 0.5rem;
+  border: none;
+  border-radius: 6px;
+  background: #ff4d4d;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.product-detail button:hover {
+  background: #e60000;
+}
+
+.back-btn {
+  background: #351d1d;
+  color: #fff;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.back-btn:hover {
+  background: #4a2a2a;
+}
+
+.cart-item-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.cart-item-info {
+  flex: 1 1 220px;
+  min-width: 220px;
+}
+
+.cart-item-name {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.cart-item-name a {
+  color: #2b49ff;
+  text-decoration: none;
+}
+
+.cart-item-price {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.cart-item-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.cart-item-actions button {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  border: none;
+  background: #f1f1f1;
+  cursor: pointer;
+}
+
+.cart-item-qty {
+  min-width: 28px;
+  text-align: center;
+}
+
+.cart-card {
+  background: white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.product-controls {
+  margin-bottom: 1.5rem;
+}
+
+.product-search,
+.product-sort {
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  min-height: 48px;
+}
+
+.product-search {
+  flex: 1;
+}
+
+.product-sort {
+  width: 220px;
+  min-width: 220px;
+}
+/* global layout Cart Page*/
+.app-container {
+  min-height: 100vh;          /* full viewport height */
+  display: flex;
+  flex-direction: column;
+}
+
+/* main content grows to push footer down */
+.main-content {
+  flex: 1;
+}
+

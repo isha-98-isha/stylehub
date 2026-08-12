@@ -1,0 +1,8 @@
+$kind: http-request
+name: remove from cart
+url: http://localhost:5000/cart/309
+method: DELETE
+body:
+  type: json
+  content: ""
+order: 2727078646077257
