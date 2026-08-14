@@ -33,14 +33,26 @@ function Checkout() {
       setIsLoading(true);
       localStorage.setItem("order", JSON.stringify(cart));
 
-      const API_BASE_URL =
-        import.meta.env.VITE_API_BASE_URL ||
-        import.meta.env.VITE_API_URL ||
-        (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
-          ? "http://localhost:5000"
-          : "/api");
+      let API_BASE_URL = "/api";
+      const envUrl = (import.meta.env.VITE_API_BASE_URL || import.meta.env.VITE_API_URL || "").trim();
+      const isLocalhost = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
 
-      const response = await fetch(`${API_BASE_URL}/create-checkout-session`, {
+      if (!isLocalhost) {
+        // Deployed site (Vercel production or preview): use same-origin relative /api
+        API_BASE_URL = "/api";
+      } else if (envUrl) {
+        API_BASE_URL = envUrl.replace(/\/+$/, "");
+      } else {
+        API_BASE_URL = "http://localhost:5000";
+      }
+
+      const requestUrl = API_BASE_URL.endsWith("/create-checkout-session")
+        ? API_BASE_URL
+        : `${API_BASE_URL}/create-checkout-session`;
+
+      console.log("Initiating checkout request to:", requestUrl);
+
+      const response = await fetch(requestUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ cart }),
