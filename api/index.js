@@ -32,11 +32,15 @@ let cart = []; // simulate in-memory cart
 
 // Helper function to safely instantiate Stripe
 const getStripeInstance = () => {
-  const stripeKey = process.env.STRIPE_SECRET_KEY;
+  let stripeKey = process.env.STRIPE_SECRET_KEY;
   if (!stripeKey) {
-    throw new Error("STRIPE_SECRET_KEY is missing from environment variables. Please check your .env or .env.local file / Vercel settings.");
+    throw new Error("STRIPE_SECRET_KEY is missing from environment variables. Please check your Vercel settings.");
   }
-  return new Stripe(stripeKey);
+  // Trim whitespace and strip any accidental double or single quotes
+  stripeKey = stripeKey.trim().replace(/^["']|["']$/g, "");
+  return new Stripe(stripeKey, {
+    httpClient: Stripe.createFetchHttpClient(),
+  });
 };
 
 // Health check routes
