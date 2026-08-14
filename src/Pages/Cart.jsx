@@ -1,10 +1,34 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { increaseQty, decreaseQty, clearCart } from "../features/cartSlice";
+import Swal from 'sweetalert2';
 
-function Cart() { // Props removed entirely
+function Cart() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const cart = useSelector((state) => state.cart.items);
+
+const handleCheckout = () => {
+  if (cart.length === 0) {
+    // SweetAlert2 popup instead of alert()
+    Swal.fire({
+      icon: 'warning',          // warning, error, success, info, question
+      title: 'Cart is Empty',
+      text: 'Please add items to your cart before checking out.',
+      confirmButtonText: 'OK',
+      confirmButtonColor: '#3085d6'
+    });
+    return;
+  }
+
+  // Save order to localStorage
+  localStorage.setItem("order", JSON.stringify(cart));
+
+  // Navigate to checkout
+  navigate("/checkout");
+};
+
+
 
   return (
     <div className="app-container">
@@ -50,10 +74,12 @@ function Cart() { // Props removed entirely
               </div>
               <div style={{ marginTop: '1.5rem', paddingTop: '1rem', borderTop: '1px solid #ccc' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', fontWeight: 'bold', fontSize: '1.1rem' }}>
-                  <span>Total Amount:</span>
-                  <span>
+                  <span>Total Amount:
                     ₹{cart.reduce((total, item) => total + item.price * item.quantity, 0)}
                   </span>
+                   <button className="btn btn-primary mt-3" onClick={handleCheckout}>
+                    Checkout
+                  </button>
                 </div>
               </div>
             </div>

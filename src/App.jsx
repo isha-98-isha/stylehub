@@ -6,6 +6,9 @@ import Women from './Pages/Women';
 import Accessories from './Pages/Accessories';
 import { Routes, Route, useNavigate, NavLink } from 'react-router-dom';
 import Cart from './Pages/Cart';
+import Checkout from './Pages/Checkout';
+import Success from './Pages/Success';
+import Cancel from './Pages/Cancel';
 import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
 import ProtectedRoute from "./ProtectedRoute";
@@ -105,12 +108,15 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/success" element={<Success />} />
+        <Route path="/cancel" element={<Cancel />} />
 
         {/* Protected routes */}
         <Route path="/men" element={<ProtectedRoute><Men /></ProtectedRoute>} />
         <Route path="/women" element={<ProtectedRoute><Women /></ProtectedRoute>} />
         <Route path="/accessories" element={<ProtectedRoute><Accessories /></ProtectedRoute>} />
         <Route path="/cart" element={<ProtectedRoute><Cart /></ProtectedRoute>} />
+        <Route path="/checkout" element={<ProtectedRoute><Checkout /></ProtectedRoute>} />
         <Route path="/product/:id" element={<ProtectedRoute><ProductDetail /></ProtectedRoute>} />
       </Routes>
 
