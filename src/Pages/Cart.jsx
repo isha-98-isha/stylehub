@@ -45,6 +45,13 @@ const handleCheckout = () => {
                   <button className="btn btn-dark" onClick={() => dispatch(clearCart())}>
                     Clear Cart
                   </button>
+                  
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontWeight: 'bold', fontSize: '1.1rem' }}>
+                  <button className="btn btn-dark" onClick={() => navigate("/history")}>
+                  Order History
+                  </button>
+                  </div>
+
                 </div>
 
                 {cart.map((item) => (

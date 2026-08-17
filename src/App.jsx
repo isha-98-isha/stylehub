@@ -7,6 +7,7 @@ import Accessories from './Pages/Accessories';
 import { Routes, Route, useNavigate, NavLink } from 'react-router-dom';
 import Cart from './Pages/Cart';
 import Checkout from './Pages/Checkout';
+import PurchaseHistory from "./Pages/PurchaseHistory";
 import Success from './Pages/Success';
 import Cancel from './Pages/Cancel';
 import Login from "./Pages/Login";
@@ -118,6 +119,7 @@ function App() {
         <Route path="/cart" element={<ProtectedRoute><Cart /></ProtectedRoute>} />
         <Route path="/checkout" element={<ProtectedRoute><Checkout /></ProtectedRoute>} />
         <Route path="/product/:id" element={<ProtectedRoute><ProductDetail /></ProtectedRoute>} />
+        <Route path="/history" element={<ProtectedRoute><PurchaseHistory /></ProtectedRoute>} />
       </Routes>
 
       <footer className="footer">
